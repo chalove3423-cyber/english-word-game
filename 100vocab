@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#fff8ed">
+  <meta name="description" content="100 คำศัพท์หนูจำแม่น เกมเรียงตัวอักษรภาษาอังกฤษ ป.1 เล่นได้ทั้งมือถือและคอมพิวเตอร์">
+  <title>100 คำศัพท์หนูจำแม่น | Unscramble</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Noto+Sans+Thai+Looped:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/audio.js" defer></script>
+  <script src="js/game.js" defer></script>
+</head>
+<body>
+  <div class="background-bubbles" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+  <div class="app-shell">
+    <header class="site-header">
+      <div class="brand"><span class="brand-icon" aria-hidden="true">🔤</span><span>ครูจีจี้ <small>English Fun!</small></span></div>
+      <div class="header-stars" title="ดาวสะสมทั้งหมด"><span aria-hidden="true">⭐</span><span id="global-stars">0</span><span class="header-stars-label">ดาวสะสม</span></div>
+    </header>
+    <main id="main-content">
+      <section id="home-screen" class="screen" aria-labelledby="home-title">
+        <div class="hero">
+          <div class="hero-stickers" aria-hidden="true"><span>🌈</span><span>✨</span><span>🌟</span></div>
+          <p class="eyebrow">🎈 เรียนรู้ภาษาอังกฤษแบบสนุก ๆ</p>
+          <h1 id="home-title">100 คำศัพท์หนูจำแม่น <span>เรียงตัวอักษร!</span></h1>
+          <p class="hero-description">ดูภาพ แล้วแตะตัวอักษรเรียงเป็นคำศัพท์ให้ถูกต้อง<br class="desktop-break"> ไม่ต้องรีบ ไม่หักคะแนน สนุกได้เต็มที่ 💛</p>
+          <div class="hero-stats"><span>📚 10 หมวด</span><span>🔡 100 คำศัพท์</span><span>💫 รอบละ 10 ข้อ</span></div>
+          <button id="random-btn" class="button random-button" type="button">🎲 เล่นทุกหมวดแบบสุ่ม <span aria-hidden="true">→</span></button>
+        </div>
+        <div class="section-title"><div><h2>เลือกหมวดที่ชอบกันเลย!</h2><p>แตะการ์ดเพื่อเริ่มเกม 10 ข้อในหมวดนั้น</p></div><span aria-hidden="true">👇</span></div>
+        <div id="category-grid" class="category-grid" aria-label="หมวดคำศัพท์"></div>
+        <p class="home-footer">💗 เก่งขึ้นทีละคำ สนุกไปด้วยกัน — อังกฤษง่าย ๆ สไตล์ครูประถม by ครูจีจี้</p>
+      </section>
+
+      <section id="game-screen" class="screen" hidden aria-labelledby="game-category-title">
+        <div class="game-topbar"><button id="back-home-btn" class="button subtle-button" type="button">⌂ <span>กลับหน้าแรก</span></button><div id="game-category-pill" class="category-pill">🐾 Animals</div><div class="round-stars" aria-label="ดาวในรอบนี้">⭐ <span id="round-stars">0</span></div></div>
+        <div class="game-heading"><h1 id="game-category-title">มาเรียงคำศัพท์กัน!</h1><p id="question-label">ข้อ 1 จาก 10</p></div>
+        <div id="progress-track" class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0" aria-label="จำนวนข้อที่ทำสำเร็จ"><div id="progress-fill" class="progress-fill"></div></div>
+        <div id="game-card" class="game-card">
+          <div id="word-illustration" class="word-illustration" aria-label="ภาพใบ้คำศัพท์">🐱</div>
+          <div class="answer-label">🔎 ดูภาพ แล้วเรียงตัวอักษรเป็นคำศัพท์</div>
+          <div id="answer-slots" class="answer-slots" aria-label="ช่องคำตอบ"></div>
+          <p id="hint-message" class="hint-message" aria-live="polite"></p>
+          <p id="feedback" class="feedback" role="status" aria-live="polite"></p>
+          <div id="star-burst" class="star-burst" aria-hidden="true"></div>
+        </div>
+        <div class="tile-section"><div class="tile-heading">👆 แตะตัวอักษรตามลำดับ</div><div id="letter-tiles" class="letter-tiles" aria-label="ตัวอักษรที่สลับแล้ว"></div></div>
+        <div class="game-actions"><button id="clear-btn" class="button action-button clear-button" type="button">↺ ล้างใหม่</button><button id="hint-btn" class="button action-button hint-button" type="button">💡 ใบ้</button><button id="speak-btn" class="button action-button voice-button" type="button" hidden>🔊 ฟังเสียง</button></div>
+        <p class="game-note">🌷 ตอบผิดลองใหม่ได้เรื่อย ๆ ไม่มีจับเวลา ไม่มีหักดาว</p>
+      </section>
+
+      <section id="result-screen" class="screen" hidden aria-labelledby="result-title">
+        <div class="result-card"><div class="result-confetti" aria-hidden="true">🎉 🌟 🎊</div><div class="result-mascot" aria-hidden="true">🏆</div><p class="eyebrow">🎈 ทำครบ 10 ข้อแล้ว</p><h1 id="result-title">เก่งมากเลย!</h1><p id="result-message">หนูตั้งใจเรียนรู้ได้ดีมากเลยค่ะ</p><div class="result-score"><span class="result-score-value" id="result-stars">30</span><span class="result-score-caption">⭐ ดาวที่ได้รับในรอบนี้</span></div><p id="result-category" class="result-category"></p><div class="result-actions"><button id="replay-btn" class="button primary-button" type="button">🔁 เล่นอีกครั้ง</button><button id="choose-category-btn" class="button outline-button" type="button">🏠 เลือกหมวดอื่น</button></div></div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
